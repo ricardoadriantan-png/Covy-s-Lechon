@@ -1,0 +1,414 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/signinbackgoundimage"
+    tools:context=".DashBoardActivity">
+
+    <!-- Decorative Circle -->
+    <View
+        android:id="@+id/view_decoration"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:layout_marginStart="-80dp"
+        android:layout_marginTop="-80dp"
+        android:alpha="0.3"
+        android:background="@drawable/bg_circle_decoration"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@+id/bottom_navigation"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/padding_medium">
+
+            <!-- Logo and Title -->
+
+            <ImageView
+                android:id="@+id/covylogo"
+                android:layout_width="153dp"
+                android:layout_height="103dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="36dp"
+                android:contentDescription="Covy Lechon Logo"
+                android:src="@drawable/logo"
+                app:layout_constraintBottom_toTopOf="@+id/tv_welcome"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.498"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <!-- Header -->
+            <ImageButton
+                android:id="@+id/btn_menu_top"
+                android:layout_width="@dimen/icon_size"
+                android:layout_height="@dimen/icon_size"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="157dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginBottom="24dp"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:src="@drawable/ic_menu"
+                app:layout_constraintBottom_toTopOf="@+id/cv_verified"
+                app:layout_constraintEnd_toStartOf="@+id/tv_welcome"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/tv_welcome"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/padding_medium"
+                android:text="WELCOME, MARK!"
+                android:textColor="@color/black"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="@+id/btn_menu_top"
+                app:layout_constraintStart_toEndOf="@+id/btn_menu_top"
+                app:layout_constraintTop_toTopOf="@+id/btn_menu_top" />
+
+            <ImageButton
+                android:id="@+id/btn_notification"
+                android:layout_width="@dimen/icon_size"
+                android:layout_height="@dimen/icon_size"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:src="@drawable/ic_notifications"
+                app:layout_constraintBottom_toBottomOf="@+id/btn_menu_top"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/btn_menu_top" />
+
+            <ImageButton
+                android:id="@+id/btn_search"
+                android:layout_width="@dimen/icon_size"
+                android:layout_height="@dimen/icon_size"
+                android:layout_marginEnd="@dimen/padding_medium"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:src="@drawable/ic_search"
+                app:layout_constraintBottom_toBottomOf="@+id/btn_menu_top"
+                app:layout_constraintEnd_toStartOf="@+id/btn_notification"
+                app:layout_constraintTop_toTopOf="@+id/btn_menu_top" />
+
+            <!-- Order Verified Card -->
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cv_verified"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/padding_large"
+                app:cardCornerRadius="@dimen/corner_radius"
+                app:cardElevation="@dimen/card_elevation"
+                app:layout_constraintTop_toBottomOf="@+id/btn_menu_top">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="145dp"
+                    android:padding="@dimen/padding_medium">
+
+                    <ImageView
+                        android:id="@+id/iv_check"
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"
+                        android:contentDescription="Verified"
+                        android:src="@drawable/ic_check"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:id="@+id/tv_verified_status"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/padding_small"
+                        android:text="ORDER VERIFIED!"
+                        android:textColor="@color/green_verified"
+                        android:textSize="16sp"
+                        android:textStyle="bold"
+                        app:layout_constraintBottom_toBottomOf="@+id/iv_check"
+                        app:layout_constraintStart_toEndOf="@+id/iv_check"
+                        app:layout_constraintTop_toTopOf="@+id/iv_check" />
+
+                    <TextView
+                        android:id="@+id/tv_verified_desc"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/padding_small"
+                        android:text="Your Lechon Manok order is\n100% Authentic and Legitimate"
+                        android:textColor="@color/text_grey"
+                        android:textSize="12sp"
+                        app:layout_constraintEnd_toStartOf="@+id/iv_verified_chicken"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/iv_check" />
+
+                    <Button
+                        android:id="@+id/btn_view_details"
+                        android:layout_width="wrap_content"
+                        android:layout_height="36dp"
+                        android:layout_marginTop="@dimen/padding_small"
+                        android:backgroundTint="@color/orange_dark"
+                        android:padding="0dp"
+                        android:text="View Orders Details"
+                        android:textAllCaps="false"
+                        android:textSize="10sp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/tv_verified_desc" />
+
+                    <ImageView
+                        android:id="@+id/iv_verified_chicken"
+                        android:layout_width="100dp"
+                        android:layout_height="80dp"
+                        android:scaleType="centerCrop"
+                        android:src="@drawable/f423b4974f4dd7924f11f1bad41bf1b4"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </androidx.cardview.widget.CardView>
+
+            <!-- Row with Status and Loyalty -->
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cv_status"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/padding_medium"
+                android:layout_marginEnd="@dimen/padding_small"
+                app:cardCornerRadius="@dimen/corner_radius"
+                app:cardElevation="@dimen/card_elevation"
+                app:layout_constraintEnd_toStartOf="@+id/cv_loyalty"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/cv_verified">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    android:padding="@dimen/padding_medium">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Delivery Status"
+                        android:textColor="@color/black"
+                        android:textSize="12sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp"
+                        android:text="Out for Delivery"
+                        android:textColor="@color/orange_primary"
+                        android:textSize="14sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Est. 15 mins remaining"
+                        android:textColor="@color/text_grey"
+                        android:textSize="10sp" />
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cv_loyalty"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/padding_small"
+                app:cardCornerRadius="@dimen/corner_radius"
+                app:cardElevation="@dimen/card_elevation"
+                app:layout_constraintBottom_toBottomOf="@+id/cv_status"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/cv_status"
+                app:layout_constraintTop_toTopOf="@+id/cv_status">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    android:padding="@dimen/padding_medium">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Loyalty Points"
+                        android:textColor="@color/black"
+                        android:textSize="12sp"
+                        android:textStyle="bold" />
+
+                    <ProgressBar
+                        style="?android:attr/progressBarStyleHorizontal"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/padding_small"
+                        android:progress="120"
+                        android:max="250"
+                        android:progressTint="@color/orange_primary" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="120 points"
+                        android:textColor="@color/orange_primary"
+                        android:textSize="14sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="250 to free chicken"
+                        android:textColor="@color/text_grey"
+                        android:textSize="10sp" />
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <!-- My Recent Orders -->
+            <TextView
+                android:id="@+id/tv_recent_orders"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/padding_large"
+                android:text="My Recent Orders"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/cv_status" />
+
+            <TextView
+                android:id="@+id/tv_view_all"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="View All"
+                android:textColor="@color/orange_primary"
+                app:layout_constraintBottom_toBottomOf="@+id/tv_recent_orders"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/tv_recent_orders" />
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cv_order_item"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/padding_medium"
+                app:cardCornerRadius="@dimen/corner_radius"
+                app:cardElevation="@dimen/card_elevation"
+                app:layout_constraintTop_toBottomOf="@+id/tv_recent_orders">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="@dimen/padding_small">
+
+                    <androidx.cardview.widget.CardView
+                        android:id="@+id/cv_order_img_container"
+                        android:layout_width="80dp"
+                        android:layout_height="80dp"
+                        app:cardCornerRadius="8dp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent">
+
+                        <ImageView
+                            android:id="@+id/iv_order_img"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:contentDescription="Order Image"
+                            android:scaleType="centerCrop"
+                            android:src="@drawable/f423b4974f4dd7924f11f1bad41bf1b4" />
+                    </androidx.cardview.widget.CardView>
+
+                    <TextView
+                        android:id="@+id/tv_order_name"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/padding_medium"
+                        android:text="Lechon Manok (Whole)"
+                        android:textColor="@color/black"
+                        android:textStyle="bold"
+                        app:layout_constraintEnd_toStartOf="@+id/iv_order_arrow"
+                        app:layout_constraintStart_toEndOf="@+id/cv_order_img_container"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:id="@+id/tv_order_id"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="ID: #123"
+                        android:textColor="@color/text_grey"
+                        android:textSize="12sp"
+                        app:layout_constraintStart_toStartOf="@+id/tv_order_name"
+                        app:layout_constraintTop_toBottomOf="@+id/tv_order_name" />
+
+                    <TextView
+                        android:id="@+id/tv_order_date"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Dec 23, 2023 - 10:30 AM"
+                        android:textColor="@color/text_grey"
+                        android:textSize="12sp"
+                        app:layout_constraintStart_toStartOf="@+id/tv_order_name"
+                        app:layout_constraintTop_toBottomOf="@+id/tv_order_id" />
+
+                    <TextView
+                        android:id="@+id/tv_order_status"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="4dp"
+                        android:background="#D5F5E3"
+                        android:paddingHorizontal="8dp"
+                        android:paddingVertical="2dp"
+                        android:text="Delivered"
+                        android:textColor="#27AE60"
+                        android:textSize="10sp"
+                        android:textStyle="bold"
+                        app:layout_constraintStart_toStartOf="@+id/tv_order_name"
+                        app:layout_constraintTop_toBottomOf="@+id/tv_order_date" />
+
+                    <ImageView
+                        android:id="@+id/iv_order_arrow"
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"
+                        android:src="@android:drawable/ic_media_play"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:tint="@color/black" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </androidx.cardview.widget.CardView>
+
+            <!-- Place New Order Button -->
+            <Button
+                android:id="@+id/btn_place_order"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="4dp"
+                android:backgroundTint="@color/orange_primary"
+                android:text="Place New Order"
+                android:textColor="@color/white"
+                app:cornerRadius="@dimen/corner_radius"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/cv_order_item"
+                app:layout_constraintVertical_bias="0.0"
+                tools:layout_editor_absoluteX="16dp" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.core.widget.NestedScrollView>
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottom_navigation"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        app:itemIconTint="@color/orange_primary"
+        app:itemTextColor="@color/orange_primary"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:menu="@menu/bottom_nav_menu" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
