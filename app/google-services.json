@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "283282633811",
+    "project_id": "covy-s-lechon",
+    "storage_bucket": "covy-s-lechon.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:283282633811:android:63cfba12ecec70814a42a6",
+        "android_client_info": {
+          "package_name": "com.company.CovysLechon"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDoPrQg2R9Nh1mK5fPvX0lfzKz4u0y4R_g"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
