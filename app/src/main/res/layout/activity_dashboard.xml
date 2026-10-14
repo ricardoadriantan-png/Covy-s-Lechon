@@ -461,9 +461,10 @@
                 android:textColor="@color/white"
                 app:cornerRadius="@dimen/corner_radius"
                 app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/cv_order_item"
-                app:layout_constraintVertical_bias="0.0"
-                tools:layout_editor_absoluteX="16dp" />
+                app:layout_constraintVertical_bias="0.0" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.core.widget.NestedScrollView>
@@ -480,6 +481,8 @@
         app:itemPaddingTop="4dp"
         app:itemPaddingBottom="4dp"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:menu="@menu/bottom_nav_menu" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
