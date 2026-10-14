@@ -38,9 +38,10 @@ dependencies {
     implementation(libs.constraintlayout)
     implementation(libs.material)
 
-    // Import the Firebase BoM
+    // Import the Firebase BoM & Messaging
     implementation(platform("com.google.firebase:firebase-bom:35.0.0"))
     implementation("com.google.firebase:firebase-auth")
+    implementation("com.google.firebase:firebase-messaging")
 
     // Retrofit, Gson & OkHttp for OpenStreetMap Nominatim Geocoding
     implementation("com.squareup.retrofit2:retrofit:2.9.0")
