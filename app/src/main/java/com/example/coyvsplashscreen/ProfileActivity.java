@@ -69,14 +69,15 @@ public class ProfileActivity extends AppCompatActivity {
 
         BottomNavigationView bottomNavigation = findViewById(R.id.bottom_navigation);
         if (bottomNavigation != null) {
-            bottomNavigation.getMenu().findItem(R.id.nav_profile).setChecked(true);
+            bottomNavigation.setSelectedItemId(R.id.nav_profile);
             bottomNavigation.setOnItemSelectedListener(item -> {
-                int id = item.getItemId();
-                if (id == R.id.nav_home) {
-                    startActivity(new Intent(ProfileActivity.this, DashBoardActivity.class));
+                int itemId = item.getItemId();
+                if (itemId == R.id.nav_home) {
+                    Intent intent = new Intent(ProfileActivity.this, DashBoardActivity.class);
+                    startActivity(intent);
                     finish();
                     return true;
-                } else if (id == R.id.nav_profile) {
+                } else if (itemId == R.id.nav_profile) {
                     return true;
                 }
                 return true;
