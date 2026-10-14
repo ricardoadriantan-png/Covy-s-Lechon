@@ -471,10 +471,14 @@
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottom_navigation"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="64dp"
         android:background="@color/white"
         app:itemIconTint="@color/orange_primary"
         app:itemTextColor="@color/orange_primary"
+        app:labelVisibilityMode="labeled"
+        app:itemIconSize="24dp"
+        app:itemPaddingTop="4dp"
+        app:itemPaddingBottom="4dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:menu="@menu/bottom_nav_menu" />
 
