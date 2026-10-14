@@ -433,6 +433,8 @@
         app:itemIconSize="24dp"
         app:itemPaddingTop="4dp"
         app:itemPaddingBottom="4dp"
+        app:itemTextAppearanceActive="@style/BottomNavTextStyle"
+        app:itemTextAppearanceInactive="@style/BottomNavTextStyle"
         app:layout_constraintBottom_toBottomOf="parent"
         app:menu="@menu/bottom_nav_menu" />
 

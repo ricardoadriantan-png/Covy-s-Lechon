@@ -6,4 +6,10 @@
     </style>
 
     <style name="Theme.CoyvSplashScreen" parent="Base.Theme.CoyvSplashScreen" />
+
+    <style name="BottomNavTextStyle" parent="TextAppearance.Material3.BodySmall">
+        <item name="android:textSize">12sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:gravity">center</item>
+    </style>
 </resources>

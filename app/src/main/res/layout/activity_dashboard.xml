@@ -477,8 +477,10 @@
         app:itemTextColor="@color/bottom_nav_color_selector"
         app:labelVisibilityMode="labeled"
         app:itemIconSize="24dp"
-        app:itemPaddingTop="4dp"
-        app:itemPaddingBottom="4dp"
+        app:itemPaddingTop="6dp"
+        app:itemPaddingBottom="6dp"
+        app:itemTextAppearanceActive="@style/BottomNavTextStyle"
+        app:itemTextAppearanceInactive="@style/BottomNavTextStyle"
         app:layout_constraintBottom_toBottomOf="parent"
         app:menu="@menu/bottom_nav_menu" />
 
