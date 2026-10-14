@@ -76,6 +76,11 @@ public class ProfileActivity extends AppCompatActivity {
                     startActivity(intent);
                     finish();
                     return true;
+                } else if (itemId == R.id.nav_menu) {
+                    Intent intent = new Intent(ProfileActivity.this, MenuActivity.class);
+                    startActivity(intent);
+                    finish();
+                    return true;
                 } else if (itemId == R.id.nav_profile) {
                     return true;
                 }
