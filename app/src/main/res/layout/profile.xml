@@ -260,8 +260,8 @@
                         <TextView
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
-                            android:layout_weight="1"
                             android:layout_marginStart="16dp"
+                            android:layout_weight="1"
                             android:text="Privacy &amp; Security"
                             android:textColor="@color/black"
                             android:textSize="14sp"
@@ -301,8 +301,8 @@
                         <TextView
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
-                            android:layout_weight="1"
                             android:layout_marginStart="16dp"
+                            android:layout_weight="1"
                             android:text="Help &amp; Support"
                             android:textColor="@color/black"
                             android:textSize="14sp"
@@ -342,8 +342,8 @@
                         <TextView
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
-                            android:layout_weight="1"
                             android:layout_marginStart="16dp"
+                            android:layout_weight="1"
                             android:text="Contact Covy\'s Lechon"
                             android:textColor="@color/black"
                             android:textSize="14sp"
@@ -383,8 +383,8 @@
                         <TextView
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
-                            android:layout_weight="1"
                             android:layout_marginStart="16dp"
+                            android:layout_weight="1"
                             android:text="About Us"
                             android:textColor="@color/black"
                             android:textSize="14sp"
@@ -427,6 +427,8 @@
         android:layout_width="match_parent"
         android:layout_height="64dp"
         android:background="@color/white"
+        android:elevation="8dp"
+        app:itemActiveIndicatorStyle="@null"
         app:itemIconTint="@color/bottom_nav_color_selector"
         app:itemTextColor="@color/bottom_nav_color_selector"
         app:labelVisibilityMode="labeled"
@@ -434,6 +436,8 @@
         app:itemPaddingTop="4dp"
         app:itemPaddingBottom="4dp"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:menu="@menu/bottom_nav_menu" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
