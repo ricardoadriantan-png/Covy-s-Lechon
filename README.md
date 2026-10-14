@@ -55,11 +55,6 @@ Our group used the Gemini AI  (AI Developer Assistant) was utilized as a collabo
 
 ---
 
-## 👥 Credits & Acknowledgments
-- **Lead Developer**: Ricardo Adrian Tan (`ricardoadriantan-png`)
-- **AI Development Assistant**: Android Studio AI Developer Assistant
-
----
 
 ## 🔗 Repository
 - **GitHub**: [https://github.com/ricardoadriantan-png/Covy-s-Lechon.git](https://github.com/ricardoadriantan-png/Covy-s-Lechon.git)
