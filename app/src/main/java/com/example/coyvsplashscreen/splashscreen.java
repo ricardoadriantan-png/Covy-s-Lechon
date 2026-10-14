@@ -11,13 +11,13 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
-public class MainActivity extends AppCompatActivity {
+public class splashscreen extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_splashscreen);
 
         Button btnGetStarted = findViewById(R.id.button);
         btnGetStarted.setOnClickListener(new View.OnClickListener() {
@@ -27,7 +27,7 @@ public class MainActivity extends AppCompatActivity {
                 if (launchIntent != null) {
                     startActivity(launchIntent);
                 } else {
-                    Intent intent = new Intent(MainActivity.this, SignInActivity.class);
+                    Intent intent = new Intent(splashscreen.this, SignInActivity.class);
                     startActivity(intent);
                 }
             }
