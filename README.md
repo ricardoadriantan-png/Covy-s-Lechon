@@ -50,5 +50,11 @@ Welcome to the **Covy's Lechon** official Android mobile application! This app p
 
 ---
 
+## 👥 Credits & Acknowledgments
+- **Lead Developer**: Ricardo Adrian Tan (`ricardoadriantan-png`)
+- **AI Development Assistant**: Expert Android AI Developer (collaborative system design, Firebase Auth & FCM integration, OpenStreetMap Retrofit client setup, custom UI design implementation, and debugging).
+
+---
+
 ## 🔗 Repository
 - **GitHub**: [https://github.com/ricardoadriantan-png/Covy-s-Lechon.git](https://github.com/ricardoadriantan-png/Covy-s-Lechon.git)
