@@ -38,13 +38,12 @@ public class DashBoardActivity extends AppCompatActivity {
         tvNowServing = findViewById(R.id.tv_now_serving);
         tvWelcome = findViewById(R.id.tv_welcome);
 
-        // Display user's name from Firebase Auth displayName or SharedPreferences fallback
+        // Display user's name from local SharedPreferences, Firebase Auth displayName, or email fallback
         FirebaseUser currentUser = FirebaseAuth.getInstance().getCurrentUser();
-        String userName = "";
-        if (currentUser != null && currentUser.getDisplayName() != null && !currentUser.getDisplayName().isEmpty()) {
+        String userName = getSharedPreferences("CovyPrefs", MODE_PRIVATE).getString("user_name", "");
+
+        if (userName.isEmpty() && currentUser != null && currentUser.getDisplayName() != null && !currentUser.getDisplayName().isEmpty()) {
             userName = currentUser.getDisplayName();
-        } else {
-            userName = getSharedPreferences("CovyPrefs", MODE_PRIVATE).getString("user_name", "");
         }
 
         if (userName.isEmpty() && currentUser != null && currentUser.getEmail() != null) {
@@ -56,7 +55,7 @@ public class DashBoardActivity extends AppCompatActivity {
         }
 
         if (userName.isEmpty()) {
-            userName = "MARK";
+            userName = "CUSTOMER";
         }
 
         if (tvWelcome != null) {
