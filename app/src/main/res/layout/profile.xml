@@ -16,7 +16,7 @@
         android:layout_marginStart="-60dp"
         android:layout_marginTop="-60dp"
         android:alpha="0.4"
-
+        android:background="@drawable/bg_circle_decoration"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -422,14 +422,16 @@
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.core.widget.NestedScrollView>
 
-    <!-- Bottom Navigation Bar -->
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottom_navigation"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="48dp"
         android:background="@color/white"
-        app:itemIconTint="@color/orange_dark"
+        app:itemIconTint="@color/orange_primary"
         app:itemTextColor="@color/orange_primary"
+        app:itemIconSize="18dp"
+        app:itemPaddingTop="0dp"
+        app:itemPaddingBottom="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:menu="@menu/bottom_nav_menu" />
 
