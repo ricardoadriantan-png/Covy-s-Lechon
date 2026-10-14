@@ -3,6 +3,7 @@ package com.example.coyvsplashscreen;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
@@ -13,10 +14,12 @@ import androidx.core.view.WindowInsetsCompat;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 public class ProfileActivity extends AppCompatActivity {
 
     private FirebaseAuth mAuth;
+    private TextView tvCustomerName;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,6 +28,15 @@ public class ProfileActivity extends AppCompatActivity {
         setContentView(R.layout.profile);
 
         mAuth = FirebaseAuth.getInstance();
+        tvCustomerName = findViewById(R.id.tv_customer_name);
+
+        // Display user's name from Firebase Auth if available
+        FirebaseUser currentUser = mAuth.getCurrentUser();
+        if (currentUser != null && currentUser.getDisplayName() != null && !currentUser.getDisplayName().isEmpty()) {
+            if (tvCustomerName != null) {
+                tvCustomerName.setText(currentUser.getDisplayName());
+            }
+        }
 
         Button btnLogout = findViewById(R.id.btn_logout);
         if (btnLogout != null) {

@@ -16,6 +16,8 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 public class DashBoardActivity extends AppCompatActivity {
 
@@ -24,6 +26,7 @@ public class DashBoardActivity extends AppCompatActivity {
 
     private TextView tvQueueNumber;
     private TextView tvNowServing;
+    private TextView tvWelcome;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,6 +36,16 @@ public class DashBoardActivity extends AppCompatActivity {
 
         tvQueueNumber = findViewById(R.id.tv_queue_number);
         tvNowServing = findViewById(R.id.tv_now_serving);
+        tvWelcome = findViewById(R.id.tv_welcome);
+
+        // Display user's name from Firebase Auth if available
+        FirebaseUser currentUser = FirebaseAuth.getInstance().getCurrentUser();
+        if (currentUser != null && currentUser.getDisplayName() != null && !currentUser.getDisplayName().isEmpty()) {
+            String userName = currentUser.getDisplayName().toUpperCase();
+            if (tvWelcome != null) {
+                tvWelcome.setText("WELCOME, " + userName + "!");
+            }
+        }
 
         Button btnPlaceOrder = findViewById(R.id.btn_place_order);
         if (btnPlaceOrder != null) {

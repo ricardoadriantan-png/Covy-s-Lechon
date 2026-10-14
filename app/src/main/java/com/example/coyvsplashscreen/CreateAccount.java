@@ -16,6 +16,7 @@ import androidx.core.view.WindowInsetsCompat;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.auth.UserProfileChangeRequest;
 
 public class CreateAccount extends AppCompatActivity {
 
@@ -87,8 +88,18 @@ public class CreateAccount extends AppCompatActivity {
                 .addOnCompleteListener(this, task -> {
                     if (task.isSuccessful()) {
                         FirebaseUser user = mAuth.getCurrentUser();
-                        Toast.makeText(CreateAccount.this, "Account Created Successfully!", Toast.LENGTH_SHORT).show();
-                        navigateToSignIn();
+                        if (user != null) {
+                            UserProfileChangeRequest profileUpdates = new UserProfileChangeRequest.Builder()
+                                    .setDisplayName(name)
+                                    .build();
+                            user.updateProfile(profileUpdates).addOnCompleteListener(updateTask -> {
+                                Toast.makeText(CreateAccount.this, "Account Created Successfully!", Toast.LENGTH_SHORT).show();
+                                navigateToSignIn();
+                            });
+                        } else {
+                            Toast.makeText(CreateAccount.this, "Account Created Successfully!", Toast.LENGTH_SHORT).show();
+                            navigateToSignIn();
+                        }
                     } else {
                         Toast.makeText(CreateAccount.this, "Registration Failed: " + task.getException().getMessage(),
                                 Toast.LENGTH_LONG).show();

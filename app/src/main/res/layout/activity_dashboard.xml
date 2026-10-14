@@ -475,6 +475,9 @@
         android:background="@color/white"
         app:itemIconTint="@color/orange_primary"
         app:itemTextColor="@color/orange_primary"
+        app:itemIconSize="20dp"
+        app:itemPaddingTop="2dp"
+        app:itemPaddingBottom="2dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:menu="@menu/bottom_nav_menu" />
 
