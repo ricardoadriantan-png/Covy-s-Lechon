@@ -50,9 +50,14 @@ Welcome to the **Covy's Lechon** official Android mobile application! This app p
 
 ---
 
+## 🤖 Artificial Intelligence (AI) Disclosure
+In accordance with academic integrity and school project guidelines, please note that Generative Artificial Intelligence (AI Developer Assistant) was utilized as a collaborative tool during the development of this project. The AI assisted with architectural planning, Firebase Authentication & Cloud Messaging setup, OpenStreetMap Retrofit API integration, Material 3 UI layout design, and debugging. All code, design decisions, and implementations were reviewed, tested, and integrated by the student developer.
+
+---
+
 ## 👥 Credits & Acknowledgments
 - **Lead Developer**: Ricardo Adrian Tan (`ricardoadriantan-png`)
-- **AI Development Assistant**: Expert Android AI Developer (collaborative system design, Firebase Auth & FCM integration, OpenStreetMap Retrofit client setup, custom UI design implementation, and debugging).
+- **AI Development Assistant**: Android Studio AI Developer Assistant
 
 ---
 
