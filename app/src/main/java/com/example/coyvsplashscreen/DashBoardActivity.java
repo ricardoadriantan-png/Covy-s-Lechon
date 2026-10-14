@@ -41,7 +41,7 @@ public class DashBoardActivity extends AppCompatActivity {
 
         BottomNavigationView bottomNavigation = findViewById(R.id.bottom_navigation);
         if (bottomNavigation != null) {
-            bottomNavigation.setSelectedItemId(R.id.nav_home);
+            bottomNavigation.getMenu().findItem(R.id.nav_home).setChecked(true);
             bottomNavigation.setOnItemSelectedListener(item -> {
                 int id = item.getItemId();
                 if (id == R.id.nav_profile) {

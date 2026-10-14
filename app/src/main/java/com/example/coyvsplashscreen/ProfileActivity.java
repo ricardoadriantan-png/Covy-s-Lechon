@@ -40,7 +40,7 @@ public class ProfileActivity extends AppCompatActivity {
 
         BottomNavigationView bottomNavigation = findViewById(R.id.bottom_navigation);
         if (bottomNavigation != null) {
-            bottomNavigation.setSelectedItemId(R.id.nav_profile);
+            bottomNavigation.getMenu().findItem(R.id.nav_profile).setChecked(true);
             bottomNavigation.setOnItemSelectedListener(item -> {
                 int id = item.getItemId();
                 if (id == R.id.nav_home) {

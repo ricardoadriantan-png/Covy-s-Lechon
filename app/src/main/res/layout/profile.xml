@@ -16,7 +16,7 @@
         android:layout_marginStart="-60dp"
         android:layout_marginTop="-60dp"
         android:alpha="0.4"
-        android:background="@drawable/bg_circle_decoration"
+
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -428,7 +428,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/white"
-        app:itemIconTint="@color/orange_primary"
+        app:itemIconTint="@color/orange_dark"
         app:itemTextColor="@color/orange_primary"
         app:layout_constraintBottom_toBottomOf="parent"
         app:menu="@menu/bottom_nav_menu" />
