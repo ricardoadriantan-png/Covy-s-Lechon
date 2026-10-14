@@ -2,7 +2,9 @@ package com.example.coyvsplashscreen;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -12,7 +14,15 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+
 public class CreateAccount extends AppCompatActivity {
+
+    private FirebaseAuth mAuth;
+    private EditText etName, etPhone, etEmail, etPassword, etConfirmPassword;
+    private Button btnSignUp;
+    private TextView tvAlreadyHaveAccount;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -20,14 +30,19 @@ public class CreateAccount extends AppCompatActivity {
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_create_account);
 
-        Button btnSignUp = findViewById(R.id.btnSignUp);
-        TextView tvAlreadyHaveAccount = findViewById(R.id.tvAlreadyHaveAccount);
+        // Initialize Firebase Auth
+        mAuth = FirebaseAuth.getInstance();
+
+        etName = findViewById(R.id.etName);
+        etPhone = findViewById(R.id.etPhone);
+        etEmail = findViewById(R.id.etEmail);
+        etPassword = findViewById(R.id.etPassword);
+        etConfirmPassword = findViewById(R.id.etConfirmPassword);
+        btnSignUp = findViewById(R.id.btnSignUp);
+        tvAlreadyHaveAccount = findViewById(R.id.tvAlreadyHaveAccount);
 
         if (btnSignUp != null) {
-            btnSignUp.setOnClickListener(v -> {
-                Toast.makeText(CreateAccount.this, "Account Created Successfully!", Toast.LENGTH_SHORT).show();
-                navigateToSignIn();
-            });
+            btnSignUp.setOnClickListener(v -> registerUser());
         }
 
         if (tvAlreadyHaveAccount != null) {
@@ -41,14 +56,49 @@ public class CreateAccount extends AppCompatActivity {
         });
     }
 
-    private void navigateToSignIn() {
-        Intent launchIntent = getPackageManager().getLaunchIntentForPackage("com.example.covysigninscreen");
-        if (launchIntent != null) {
-            startActivity(launchIntent);
-        } else {
-            Intent intent = new Intent(CreateAccount.this, SignInActivity.class);
-            startActivity(intent);
+    private void registerUser() {
+        String email = etEmail.getText().toString().trim();
+        String password = etPassword.getText().toString().trim();
+        String confirmPassword = etConfirmPassword.getText().toString().trim();
+        String name = etName.getText().toString().trim();
+
+        if (TextUtils.isEmpty(name)) {
+            etName.setError("Name is required");
+            return;
         }
+        if (TextUtils.isEmpty(email)) {
+            etEmail.setError("Email is required");
+            return;
+        }
+        if (TextUtils.isEmpty(password)) {
+            etPassword.setError("Password is required");
+            return;
+        }
+        if (password.length() < 6) {
+            etPassword.setError("Password must be at least 6 characters");
+            return;
+        }
+        if (!password.equals(confirmPassword)) {
+            etConfirmPassword.setError("Passwords do not match");
+            return;
+        }
+
+        mAuth.createUserWithEmailAndPassword(email, password)
+                .addOnCompleteListener(this, task -> {
+                    if (task.isSuccessful()) {
+                        FirebaseUser user = mAuth.getCurrentUser();
+                        Toast.makeText(CreateAccount.this, "Account Created Successfully!", Toast.LENGTH_SHORT).show();
+                        navigateToSignIn();
+                    } else {
+                        Toast.makeText(CreateAccount.this, "Registration Failed: " + task.getException().getMessage(),
+                                Toast.LENGTH_LONG).show();
+                    }
+                });
+    }
+
+    private void navigateToSignIn() {
+        Intent intent = new Intent(CreateAccount.this, SignInActivity.class);
+        startActivity(intent);
         finish();
     }
 }

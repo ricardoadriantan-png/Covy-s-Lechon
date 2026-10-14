@@ -2,6 +2,7 @@ package com.example.coyvsplashscreen;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -13,17 +14,24 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+
 public class SignInActivity extends AppCompatActivity {
-    EditText username;
-    EditText password;
-    Button buttonlogin;
-    Button buttonNewAccount;
+    private FirebaseAuth mAuth;
+    private EditText username;
+    private EditText password;
+    private Button buttonlogin;
+    private Button buttonNewAccount;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_sign_in);
+
+        // Initialize Firebase Auth
+        mAuth = FirebaseAuth.getInstance();
 
         username = findViewById(R.id.editTextTextEmailAddress);
         password = findViewById(R.id.editTextTextPassword);
@@ -33,24 +41,14 @@ public class SignInActivity extends AppCompatActivity {
         buttonlogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String userStr = username.getText().toString();
-                String passStr = password.getText().toString();
-
-                if (userStr.equals("users") && passStr.equals("1234")) {
-                    Toast.makeText(SignInActivity.this, "Login Successful", Toast.LENGTH_SHORT).show();
-                    Intent intent = new Intent(SignInActivity.this, DashBoardActivity.class);
-                    startActivity(intent);
-                    finish();
-                } else {
-                    Toast.makeText(SignInActivity.this, "Login Failed", Toast.LENGTH_SHORT).show();
-                }
+                loginUser();
             }
         });
 
         if (buttonNewAccount != null) {
             buttonNewAccount.setOnClickListener(v -> {
-                Intent intent = new Intent(SignInActivity.this, CreateAccount.class);
-                startActivity(intent);
+                Intent intentNew = new Intent(SignInActivity.this, CreateAccount.class);
+                startActivity(intentNew);
             });
         }
 
@@ -59,5 +57,33 @@ public class SignInActivity extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
+    }
+
+    private void loginUser() {
+        String email = username.getText().toString().trim();
+        String pass = password.getText().toString().trim();
+
+        if (TextUtils.isEmpty(email)) {
+            username.setError("Email is required");
+            return;
+        }
+        if (TextUtils.isEmpty(pass)) {
+            password.setError("Password is required");
+            return;
+        }
+
+        mAuth.signInWithEmailAndPassword(email, pass)
+                .addOnCompleteListener(this, task -> {
+                    if (task.isSuccessful()) {
+                        FirebaseUser user = mAuth.getCurrentUser();
+                        Toast.makeText(SignInActivity.this, "Login Successful", Toast.LENGTH_SHORT).show();
+                        Intent intent = new Intent(SignInActivity.this, DashBoardActivity.class);
+                        startActivity(intent);
+                        finish();
+                    } else {
+                        Toast.makeText(SignInActivity.this, "Authentication Failed: " + task.getException().getMessage(),
+                                Toast.LENGTH_LONG).show();
+                    }
+                });
     }
 }
