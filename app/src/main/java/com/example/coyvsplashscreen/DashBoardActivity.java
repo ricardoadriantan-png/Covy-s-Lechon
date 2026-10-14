@@ -1,5 +1,6 @@
 package com.example.coyvsplashscreen;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.TextView;
@@ -39,10 +40,18 @@ public class DashBoardActivity extends AppCompatActivity {
         }
 
         BottomNavigationView bottomNavigation = findViewById(R.id.bottom_navigation);
-        bottomNavigation.setOnItemSelectedListener(item -> {
-            // Handle navigation
-            return true;
-        });
+        if (bottomNavigation != null) {
+            bottomNavigation.setSelectedItemId(R.id.nav_home);
+            bottomNavigation.setOnItemSelectedListener(item -> {
+                int id = item.getItemId();
+                if (id == R.id.nav_profile) {
+                    startActivity(new Intent(DashBoardActivity.this, ProfileActivity.class));
+                    finish();
+                    return true;
+                }
+                return true;
+            });
+        }
 
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
