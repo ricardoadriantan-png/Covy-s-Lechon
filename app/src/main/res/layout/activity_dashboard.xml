@@ -473,14 +473,12 @@
         android:layout_width="match_parent"
         android:layout_height="64dp"
         android:background="@color/white"
-        app:itemIconTint="@color/bottom_nav_color_selector"
-        app:itemTextColor="@color/bottom_nav_color_selector"
+        app:itemIconTint="@color/orange_primary"
+        app:itemTextColor="@color/orange_primary"
         app:labelVisibilityMode="labeled"
         app:itemIconSize="24dp"
-        app:itemPaddingTop="6dp"
-        app:itemPaddingBottom="6dp"
-        app:itemTextAppearanceActive="@style/BottomNavTextStyle"
-        app:itemTextAppearanceInactive="@style/BottomNavTextStyle"
+        app:itemPaddingTop="4dp"
+        app:itemPaddingBottom="4dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:menu="@menu/bottom_nav_menu" />
 
