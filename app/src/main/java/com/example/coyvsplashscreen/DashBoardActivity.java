@@ -1,6 +1,5 @@
 package com.example.coyvsplashscreen;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.TextView;
@@ -16,8 +15,6 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
 
 public class DashBoardActivity extends AppCompatActivity {
 
@@ -26,7 +23,6 @@ public class DashBoardActivity extends AppCompatActivity {
 
     private TextView tvQueueNumber;
     private TextView tvNowServing;
-    private TextView tvWelcome;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,32 +32,6 @@ public class DashBoardActivity extends AppCompatActivity {
 
         tvQueueNumber = findViewById(R.id.tv_queue_number);
         tvNowServing = findViewById(R.id.tv_now_serving);
-        tvWelcome = findViewById(R.id.tv_welcome);
-
-        // Display user's name from Firebase Auth displayName or SharedPreferences fallback
-        FirebaseUser currentUser = FirebaseAuth.getInstance().getCurrentUser();
-        String userName = "";
-        if (currentUser != null && currentUser.getDisplayName() != null && !currentUser.getDisplayName().isEmpty()) {
-            userName = currentUser.getDisplayName();
-        } else {
-            userName = getSharedPreferences("CovyPrefs", MODE_PRIVATE).getString("user_name", "");
-        }
-
-        if (userName.isEmpty() && currentUser != null && currentUser.getEmail() != null) {
-            String email = currentUser.getEmail();
-            int atIndex = email.indexOf('@');
-            if (atIndex > 0) {
-                userName = email.substring(0, atIndex);
-            }
-        }
-
-        if (userName.isEmpty()) {
-            userName = "MARK";
-        }
-
-        if (tvWelcome != null) {
-            tvWelcome.setText("WELCOME, " + userName.toUpperCase() + "!");
-        }
 
         Button btnPlaceOrder = findViewById(R.id.btn_place_order);
         if (btnPlaceOrder != null) {
@@ -69,20 +39,10 @@ public class DashBoardActivity extends AppCompatActivity {
         }
 
         BottomNavigationView bottomNavigation = findViewById(R.id.bottom_navigation);
-        if (bottomNavigation != null) {
-            bottomNavigation.setSelectedItemId(R.id.nav_home);
-            bottomNavigation.setOnItemSelectedListener(item -> {
-                int itemId = item.getItemId();
-                if (itemId == R.id.nav_profile) {
-                    Intent intent = new Intent(DashBoardActivity.this, ProfileActivity.class);
-                    startActivity(intent);
-                    return true;
-                } else if (itemId == R.id.nav_home) {
-                    return true;
-                }
-                return true;
-            });
-        }
+        bottomNavigation.setOnItemSelectedListener(item -> {
+            // Handle navigation
+            return true;
+        });
 
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
