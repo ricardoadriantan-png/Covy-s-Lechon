@@ -3,6 +3,7 @@ package com.example.coyvsplashscreen;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -60,6 +61,14 @@ public class DashBoardActivity extends AppCompatActivity {
 
         if (tvWelcome != null) {
             tvWelcome.setText("WELCOME, " + userName.toUpperCase() + "!");
+        }
+
+        ImageButton btnMenuTop = findViewById(R.id.btn_menu_top);
+        if (btnMenuTop != null) {
+            btnMenuTop.setOnClickListener(v -> {
+                Intent intent = new Intent(DashBoardActivity.this, MenuActivity.class);
+                startActivity(intent);
+            });
         }
 
         Button btnPlaceOrder = findViewById(R.id.btn_place_order);
