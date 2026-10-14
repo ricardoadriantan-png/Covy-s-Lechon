@@ -38,13 +38,29 @@ public class DashBoardActivity extends AppCompatActivity {
         tvNowServing = findViewById(R.id.tv_now_serving);
         tvWelcome = findViewById(R.id.tv_welcome);
 
-        // Display user's name from Firebase Auth if available
+        // Display user's name from Firebase Auth displayName or SharedPreferences fallback
         FirebaseUser currentUser = FirebaseAuth.getInstance().getCurrentUser();
+        String userName = "";
         if (currentUser != null && currentUser.getDisplayName() != null && !currentUser.getDisplayName().isEmpty()) {
-            String userName = currentUser.getDisplayName().toUpperCase();
-            if (tvWelcome != null) {
-                tvWelcome.setText("WELCOME, " + userName + "!");
+            userName = currentUser.getDisplayName();
+        } else {
+            userName = getSharedPreferences("CovyPrefs", MODE_PRIVATE).getString("user_name", "");
+        }
+
+        if (userName.isEmpty() && currentUser != null && currentUser.getEmail() != null) {
+            String email = currentUser.getEmail();
+            int atIndex = email.indexOf('@');
+            if (atIndex > 0) {
+                userName = email.substring(0, atIndex);
             }
+        }
+
+        if (userName.isEmpty()) {
+            userName = "MARK";
+        }
+
+        if (tvWelcome != null) {
+            tvWelcome.setText("WELCOME, " + userName.toUpperCase() + "!");
         }
 
         Button btnPlaceOrder = findViewById(R.id.btn_place_order);

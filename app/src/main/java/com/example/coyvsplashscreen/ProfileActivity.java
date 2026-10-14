@@ -30,12 +30,29 @@ public class ProfileActivity extends AppCompatActivity {
         mAuth = FirebaseAuth.getInstance();
         tvCustomerName = findViewById(R.id.tv_customer_name);
 
-        // Display user's name from Firebase Auth if available
+        // Display user's name from Firebase Auth displayName or SharedPreferences fallback
         FirebaseUser currentUser = mAuth.getCurrentUser();
+        String userName = "";
         if (currentUser != null && currentUser.getDisplayName() != null && !currentUser.getDisplayName().isEmpty()) {
-            if (tvCustomerName != null) {
-                tvCustomerName.setText(currentUser.getDisplayName());
+            userName = currentUser.getDisplayName();
+        } else {
+            userName = getSharedPreferences("CovyPrefs", MODE_PRIVATE).getString("user_name", "");
+        }
+
+        if (userName.isEmpty() && currentUser != null && currentUser.getEmail() != null) {
+            String email = currentUser.getEmail();
+            int atIndex = email.indexOf('@');
+            if (atIndex > 0) {
+                userName = email.substring(0, atIndex);
             }
+        }
+
+        if (userName.isEmpty()) {
+            userName = "Walk-in Customer";
+        }
+
+        if (tvCustomerName != null) {
+            tvCustomerName.setText(userName);
         }
 
         Button btnLogout = findViewById(R.id.btn_logout);

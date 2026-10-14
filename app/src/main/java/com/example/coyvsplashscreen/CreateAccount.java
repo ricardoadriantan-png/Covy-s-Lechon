@@ -88,6 +88,13 @@ public class CreateAccount extends AppCompatActivity {
                 .addOnCompleteListener(this, task -> {
                     if (task.isSuccessful()) {
                         FirebaseUser user = mAuth.getCurrentUser();
+                        
+                        // Save name to SharedPreferences for instant reliable local access across activities
+                        getSharedPreferences("CovyPrefs", MODE_PRIVATE)
+                                .edit()
+                                .putString("user_name", name)
+                                .apply();
+
                         if (user != null) {
                             UserProfileChangeRequest profileUpdates = new UserProfileChangeRequest.Builder()
                                     .setDisplayName(name)
