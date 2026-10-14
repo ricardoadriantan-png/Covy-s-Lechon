@@ -84,10 +84,12 @@ public class DashBoardActivity extends AppCompatActivity {
                 if (itemId == R.id.nav_profile) {
                     Intent intent = new Intent(DashBoardActivity.this, ProfileActivity.class);
                     startActivity(intent);
+                    finish();
                     return true;
                 } else if (itemId == R.id.nav_menu) {
                     Intent intent = new Intent(DashBoardActivity.this, MenuActivity.class);
                     startActivity(intent);
+                    finish();
                     return true;
                 } else if (itemId == R.id.nav_home) {
                     return true;
