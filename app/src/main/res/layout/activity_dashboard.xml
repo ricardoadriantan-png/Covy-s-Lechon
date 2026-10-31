@@ -107,6 +107,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/btn_menu_top">
 
                 <androidx.constraintlayout.widget.ConstraintLayout
+                    android:background="@color/white"
                     android:layout_width="match_parent"
                     android:layout_height="145dp"
                     android:padding="@dimen/padding_medium">
@@ -252,6 +253,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/cv_queue">
 
                 <LinearLayout
+                    android:background="white"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center"
@@ -297,6 +299,7 @@
                 app:layout_constraintTop_toTopOf="@+id/cv_status">
 
                 <LinearLayout
+                    android:background="white"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center"
